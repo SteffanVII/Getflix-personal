@@ -108,7 +108,7 @@ function Header() {
                     <span className={'view-all ' + (viewAll ? 'show' : '') }>View All</span>
                 </div>
             </div>
-            <h1><Link to={'/'}>Getflix</Link></h1>
+            <h1><Link to={'/Getflix-personal'}>Getflix</Link></h1>
             <div className="menu-button-wrapper">
                 <div className="indicator">
                     <span></span>
