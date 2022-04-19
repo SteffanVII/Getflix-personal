@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+#discover-page {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 100vh;
+  padding-top: 150px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: min-content, auto;
+      grid-template-columns: -webkit-min-content, auto;
+      grid-template-columns: min-content, auto;
+  -ms-grid-rows: min-content;
+      grid-template-rows: -webkit-min-content;
+      grid-template-rows: min-content;
+}
+
+#discover-page .filters-container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  gap: 20px;
+}
+
+#discover-page .filters-container .filter {
+  width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 40px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+#discover-page .filters-container .filter .filter-name {
+  color: #2A3B45;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#discover-page .filters-container .filter.genre {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 15px;
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .add-genre {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .add-genre span {
+  position: absolute;
+  display: inline-block;
+  background-color: #2A3B45;
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .add-genre span:nth-child(1) {
+  width: 4px;
+  height: 20px;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .add-genre span:nth-child(2) {
+  width: 20px;
+  height: 4px;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .add-genre.open {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .dropdown-selections {
+  width: 70%;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: calc(100% + 20px);
+  display: none;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .dropdown-selections .selection {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: bold;
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .dropdown-selections .selection:hover {
+  background-color: #567CA0;
+}
+
+#discover-page .filters-container .filter.genre .genre-dropdown .dropdown-selections.open {
+  display: initial;
+}
+
+#discover-page .filters-container .filter.genre .added-genres {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 10px;
+}
+
+#discover-page .filters-container .filter.genre .added-genres .filter-genre {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: calc(1.4rem + 10px);
+  background-color: #567CA0;
+  color: white;
+  font-size: 1.4rem;
+  font-family: "Roboto Condensed", sans-serif;
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(15, 58, 102, 0.473);
+          box-shadow: 1px 1px 2px 0px rgba(15, 58, 102, 0.473);
+}
+
+#discover-page .filters-container .filter.genre .added-genres .filter-genre .remove-genre {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+#discover-page .filters-container .filter.genre .added-genres .filter-genre .remove-genre span {
+  position: absolute;
+  display: inline-block;
+  background-color: #2A3B45;
+  pointer-events: none;
+}
+
+#discover-page .filters-container .filter.genre .added-genres .filter-genre .remove-genre span:nth-child(1) {
+  width: 2px;
+  height: 12px;
+  top: 2px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+#discover-page .filters-container .filter.genre .added-genres .filter-genre .remove-genre span:nth-child(2) {
+  width: 12px;
+  height: 2px;
+  left: 2px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+#discover-page .filters-container .filter.year {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#discover-page .filters-container .filter.year select {
+  width: 60px;
+  outline: none;
+  border: none;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+#discover-page .filters-container .filter.order-by {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#discover-page .filters-container .filter.order-by select {
+  outline: none;
+  border: none;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+#discover-page .filters-container a {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: transparent;
+  font-size: 1.7rem;
+  font-family: "Roboto Condensed", sans-serif;
+  -webkit-transition: background-color 0.5s, color 0.5s;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+#discover-page .filters-container a:hover {
+  background-color: white;
+  color: #2A3B45;
+  -webkit-transition: none;
+  transition: none;
+}
+/*# sourceMappingURL=discover.css.map */

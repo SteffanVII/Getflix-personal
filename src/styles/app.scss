@@ -1,0 +1,106 @@
+@import 'variables';
+@import 'queries';
+
+:root {
+    font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+
+    font-family: $roboto-condensed;
+
+    background: $radial-background;
+    background-size: 100vw 120vh;
+    background-position-x: 50%;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    
+    #root {
+        width: 100%;
+        height: 100vh;
+        
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        
+        .App {
+            height: fit-content;
+
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+
+            scroll-behavior: smooth;
+
+            overflow-x: hidden;
+
+            // &::-webkit-scrollbar {
+            //     display: none;
+            // }`
+
+            .section-name {
+                position: absolute;
+                top: 40px;
+                left: 40px;
+        
+                font-size: 2rem;
+                font-family: $roboto;
+                font-weight: bolder;
+        
+                color: white;
+
+                @include w768 {
+                    top: 20px;
+                    left: 20px;
+                }
+            }
+
+            main {
+                position: relative;
+    
+                width: 100%;
+                max-width: 1980px;
+                height: fit-content;
+
+                &.in-movie {
+                    max-width: none;
+                }
+    
+                .popular-upcoming-wrapper {
+                    width: 100%;
+                    height: 500px;
+
+                    position: relative;
+    
+                    padding: 50px 5%;
+                    
+                    display: grid;
+                    grid-template-columns: 6fr 4fr;
+                    grid-template-rows: 400px;
+                    gap: 5%;
+
+                    @include w1060 {
+                        height: 1000px;
+
+                        grid-template-columns: 1fr;
+                        grid-template-rows: 55% 40%;
+                    }
+
+                    @include w420 {
+                        height: 800px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+#popular {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 10px;
+  background-color: black;
+}
+
+#popular .pop-button {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 8px 4px #0f1b263f;
+          box-shadow: 0px 0px 8px 4px #0f1b263f;
+  -webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+  transition: opacity 0.5s, visibility 0s 0.5s;
+}
+
+#popular .pop-button::before {
+  content: '';
+  width: 30%;
+  height: 30%;
+}
+
+#popular .pop-button--up {
+  bottom: 100%;
+  -webkit-transform: translateY(50%);
+          transform: translateY(50%);
+}
+
+#popular .pop-button--up::before {
+  border-top: 2px solid gray;
+  border-left: 2px solid gray;
+  -webkit-transform: translateY(15%) rotate(45deg);
+          transform: translateY(15%) rotate(45deg);
+}
+
+#popular .pop-button--down {
+  top: 100%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+#popular .pop-button--down::before {
+  border-bottom: 2px solid gray;
+  border-right: 2px solid gray;
+  -webkit-transform: translateY(-15%) rotate(45deg);
+          transform: translateY(-15%) rotate(45deg);
+}
+
+#popular ul {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  gap: 6px;
+}
+
+#popular ul li {
+  width: 6px;
+  height: 6px;
+  position: relative;
+  display: inline-block;
+  list-style: none;
+}
+
+#popular ul li label {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border: 1px solid white;
+  border-radius: 50%;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+#popular ul li label a {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+#popular ul li input[type=radio] {
+  display: none;
+}
+
+#popular ul li input[type=radio]:checked + label {
+  background-color: white;
+}
+
+#popular .pop-gradient {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0f1b26a1), color-stop(#0f1b2600), to(#0F1B26a1));
+  background: linear-gradient(#0f1b26a1, #0f1b2600, #0F1B26a1);
+}
+
+#popular .popular-backdrops-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  pointer-events: none;
+  scrollbar-width: none;
+}
+
+#popular .popular-backdrops-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+#popular .popular-backdrops-wrapper .popbg-wrapper {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+
+#popular .popular-backdrops-wrapper .popbg-wrapper img {
+  width: 100%;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+#popular .popular-title-wrapper {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  #popular .popular-title-wrapper {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+#popular .popular-title-wrapper a {
+  color: white;
+  text-decoration: none;
+  font-size: 2.4rem;
+  display: inline-block;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+@media screen and (max-width: 768px) {
+  #popular .popular-title-wrapper a {
+    font-size: 2rem;
+  }
+}
+
+#popular .popular-title-wrapper a.switch {
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+#popular:hover .pop-button {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+#popular:hover .popbg-wrapper img {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+/*# sourceMappingURL=popular.css.map */

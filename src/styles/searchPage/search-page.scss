@@ -1,0 +1,271 @@
+@import './../variables';
+@import './../queries';
+
+#search {
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+    position: relative;
+
+    padding: 0px 5%;
+    padding-top: 130px;
+
+    h2 {
+        color: white;
+        font-size: 2rem;
+        font-family: $roboto-condensed;
+    }
+
+    .search-page-results-container {
+        width: 100%;
+        height: fit-content;
+        padding: 50px 0px;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 60px;
+        
+        .search-page-card-row {
+            width: 100%;
+            max-width: calc(calc(160px * 8) + 140px );
+            height: fit-content;
+            padding-top: 10px;
+            padding-bottom: 40px;
+            
+            position: relative;
+            
+            overflow-x: hidden;
+
+            // outline: 1px solid red;
+            
+            @include w1650 {
+                max-width: calc(calc(160px * 7) + 120px );
+            }
+
+            @include w1380 {
+                max-width: calc(calc(160px * 6) + 100px );
+            }
+
+            @include w1180 {
+                max-width: calc(calc(160px * 5) + 80px );
+            }
+
+            @include w980 {
+                max-width: calc(calc(160px * 4) + 60px );
+            }
+
+            @include w780 {
+                max-width: calc(calc(160px * 3) + 40px );
+            }
+
+            @include w580 {
+                max-width: calc(calc(160px * 2) + 20px );
+            }
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .card-row-inner-wrap {
+                width: 10000px;
+                height: fit-content;
+                display: flex;
+                gap: 20px;
+
+                .search-page-card {
+                    width: 160px;
+                    height: 240px;
+                    position: relative;
+                    
+                    flex-shrink: 0;
+                    border-radius: 5px;
+                    border: 2px solid #26323D;
+                    
+                    background-color: black;
+                    
+                    transition: width 0.2s;
+                    
+                    .title {
+                        width: 160px;
+                        position: absolute;
+                        top: calc(100% + 10px);
+                        left: 0;
+
+                        color: white;
+                        font-family: $roboto-condensed;
+                        font-size: 1.5rem;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+
+                    .details {
+                        width: 100%;
+                        height: 100%;
+                        padding: 15px;
+
+                        background-color: transparent;
+                        background: linear-gradient( to top, #0F1B26, #0f1b2600 );
+                        border-radius: 5px;
+
+                        transform: translateY(-100%);
+                        opacity: 0;
+
+                        transition: opacity 0.5s;
+
+                        pointer-events: none;
+
+                        .inner-title {
+                            display: block;
+                            color: white;
+                            font-family: $roboto-condensed;
+                            font-size: 1.5rem;
+                            margin-bottom: 10px;
+                        }
+
+                        .rating {
+                            min-width: 20px;
+                            color: white;
+                            font-size: 1.4rem;
+                            padding: 2px;
+                            text-align: center;
+
+                            display: inline-block;
+
+                            opacity: 0;
+                            
+                            border: 1px solid white;
+                            border-radius: 2px;
+                            
+                            &.G {
+                                opacity: 1;
+                                border-color: rgb(111, 180, 111);
+                                background-color: rgb(111, 180, 111);
+                            }
+                            
+                            &.PG {
+                                opacity: 1;
+                                border-color: orange;
+                                background-color: orange;
+                            }
+                            
+                            &.PG-13 {
+                                opacity: 1;
+                                border-color: rgb(175, 88, 175);    
+                                background-color: rgb(175, 88, 175);    
+                            }
+                            
+                            &.R {
+                                opacity: 1;
+                                border-color: rgb(255, 100, 100);
+                                background-color: rgb(255, 100, 100);
+                            }
+                            
+                            &.NC-17 {
+                                opacity: 1;
+                                border-color: rgb(0, 183, 255);
+                                background-color: rgb(0, 183, 255);
+                            }
+                        }
+
+                        .release-date {
+                            position: absolute;
+                            bottom: 15px;
+                            left: 15px;
+
+                            color: gray;
+                            font-display: $roboto;
+                            font-size: 1.5rem;
+                        }
+
+                        .watch {
+                            padding: 10px;
+                            position: absolute;
+                            bottom: 15px;
+                            right: 15px;
+
+                            border-radius: 4px;
+                            border: 1px solid white;
+
+                            color: white;
+                            font-family: $roboto-condensed;
+                            font-size: 1.6rem;
+                            text-decoration: none;
+                            
+                            pointer-events: auto;
+
+                            &:hover {
+                                color: #0F1B26;
+                                background-color: white;
+                            }
+                        }
+                    }
+                    
+                    .search-page-card-images-wrapper {
+                        
+                        width: 100%;
+                        height: 100%;
+                        
+                        border-radius: 5px;
+                        overflow: hidden;
+
+                        object-fit: cover;
+
+                        pointer-events: none;
+
+                        .poster {
+                            width: 100%;
+                            height: 100%;
+
+                            object-fit: cover;
+                            transform: translateY(-100%);
+
+                            transition: transform 0.5s,
+                                        opacity 0.5s;
+                            pointer-events: none;
+                        }
+    
+                        .bd-wrapper {
+                            width: 100%;
+                            height: 100%;
+    
+                            display: flex;
+                            justify-content: center;
+    
+                            pointer-events: none;
+                            
+                            img {
+                                height: 100%;
+                                object-fit: cover;
+                                pointer-events: none;
+                            }
+                        }
+                    }
+
+
+                    &:hover {
+                        width: 340px;
+
+                        .title {
+                            width: 340px;
+                        }
+
+                        .details {
+                            opacity: 1;
+                        }
+
+                        .search-page-card-images-wrapper {
+                            
+
+                            .poster {
+                                transform: translateY(0%);
+                                // opacity: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

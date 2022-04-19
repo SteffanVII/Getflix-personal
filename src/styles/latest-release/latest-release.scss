@@ -1,0 +1,337 @@
+@import '../variables';
+
+#latest {
+    width: 100%;
+    height: fit-content;
+    margin-top: 50px;
+
+    position: relative;
+    
+    .whats-latest {
+        padding-left: 5%;
+        
+        color: white;
+        font-size: 2rem;
+        font-family: $roboto;
+        font-weight: bolder;
+    }
+    
+    .cards-container {
+        width: 100%;
+        height: fit-content;
+        padding: 50px 5%;
+
+        // display: flex;
+        // gap: 30px;
+        white-space: nowrap;
+        
+        overflow: auto;
+        
+        scrollbar-width: thin;
+        scrollbar-color: white transparent;
+
+        &::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(38, 69, 78);
+            border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-track-piece:end {
+            margin-right: 200px;
+        }
+
+        &::-webkit-scrollbar-track-piece:start {
+            margin-left: 200px
+        }
+
+        .latest-card {
+            width: fit-content;
+            height: 240px;
+            margin: 0px 15px;
+            
+            position: relative;
+
+            display: inline-block;
+            
+            border-radius: 5px;
+            background: linear-gradient(to left, #0F1B26 160px, #0f1b2600);
+
+            &:first-child {
+                margin-left: 0px;
+            }
+
+            &:last-child {
+                margin-right: 0px;
+            }
+
+            .option {
+                width: fit-content;
+                position: absolute;
+                right: 30px;
+                top: 50%;
+
+                border-radius: 5px; 
+                list-style: none;
+                background-color: white;
+                opacity: 0;
+
+                overflow: hidden;
+
+                pointer-events: none;
+
+                transform: translateY(0%);
+
+                transition: transform 0.5s,
+                            opacity 0.5s;
+
+                a {
+                    width: 160px;
+                    padding: 10px 0px;
+
+                    display: inline-block;
+
+                    text-align: center;
+                    text-decoration: none;
+                    color: gray;
+                    font-family: $roboto;
+                    font-size: 1.3rem;
+
+                    &:hover {
+                        background-color: #0F1B26;
+                    }
+                }
+            }
+
+            .option-button {
+                width: 24px;
+                height: 24px;
+
+                position: absolute;
+                top: 10px;
+                right: 10px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2px;
+
+                outline: none;
+                border: none;
+                border-radius: 50%;
+
+                opacity: 0;
+
+                pointer-events: none;
+                cursor: pointer;
+
+                transition: opacity 0.5s;
+
+                span {
+                    width: 4px;
+                    height: 4px;
+
+                    display: inline-block;
+
+                    border-radius: 50%;
+
+                    background-color: gray;
+                }
+            }
+            
+            .wrapper {
+                width: fit-content;
+                height: 100%;
+
+                position: relative;
+
+                display: flex;
+                align-items: center;
+
+                border-radius: 5px;
+
+                overflow: hidden;
+                
+                img {
+                    width: 160px;
+                    height: 100%;
+    
+                    border-radius: 6px;
+
+                    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.301);
+                }
+    
+                .details {
+                    width: fit-content;
+                    max-width: 0px;
+                    height: 80%;
+                    padding: 0px 0px;
+    
+                    position: relative;
+    
+                    display: flex;
+                    flex-flow: column;
+                    gap: 10px;
+    
+                    opacity: 0;
+    
+                    overflow: auto;
+    
+                    transition: max-width 0.5s,
+                                padding 0.5s;
+
+                    &::-webkit-scrollbar {
+                        width: 2px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background-color: transparent;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: white;
+                    }
+
+                    .title-release-wrapper {
+                        .title {
+                            font-size: 1.7rem;
+                            color: white;
+                        }
+
+                        .release-date {
+                            margin-left: 10px;
+
+                            font-size: 1.7rem;
+                            color: gray;
+                        }
+                    }
+                                
+    
+                    .rating {
+                        width: fit-content;
+                        padding: 5px;
+    
+                        border: 1px solid white;
+                        border-radius: 3px;
+    
+                        display: inline-block;
+    
+                        font-family: Arial, Helvetica, sans-serif;
+                        font-size: 1.2rem;
+                        color: white;
+
+                        &.G {
+                            color: rgb(111, 180, 111);
+                            border-color: rgb(111, 180, 111);
+                        }
+
+                        &.PG {
+                            color: orange;
+                            border-color: orange;
+                        }
+                        
+                        &.PG-13 {
+                            color: rgb(175, 88, 175);
+                            border-color: rgb(175, 88, 175);    
+                        }
+
+                        &.R {
+                            color: rgb(255, 100, 100);
+                            border-color: rgb(255, 100, 100);
+                        }
+
+                        &.NC-17 {
+                            color: rgb(0, 183, 255);
+                            border-color: rgb(0, 183, 255);
+                        }
+                    }
+
+                    .overview {
+                        white-space:normal;
+
+                        color: white;
+                        font-family: $roboto-condensed;
+                        font-size: 1.2rem;
+                    }
+
+                    .latest-genres-wrapper {
+                        display: flex;
+                        gap: 5px;
+
+                        a {
+                            padding: 5px 10px;
+                            border-radius: 2px;
+        
+                            text-decoration: none;
+                            color: #2A3B45;
+                            background-color: white;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                        }
+                    }
+    
+                    .play { 
+                        width: 80px;
+                        padding: 6px;
+                        
+                        display: inline-block;
+                        border: 2px solid white;
+                        border-radius: 4px;
+    
+                        text-align: center;
+                        text-decoration: none;
+                        color: white;
+                        font-family: $roboto-condensed;
+                        font-size: 1.7rem;
+    
+                        transition: background-color 0.3s;
+    
+                        &:hover {
+                            color: #0F1B26;
+                            background-color: white;
+                        }
+                    }
+                }
+            }
+            
+
+            &:hover {
+
+                box-shadow: 0px 0px 5px 2px rgb(117, 165, 211);
+
+                .option-button {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+
+                .option {
+
+                    &.open {
+                        pointer-events: all;
+                        transform: translateY(-50%);
+                        opacity: 1;
+                    }
+                }
+
+                .wrapper {
+
+                    .details {
+                        max-width: 600px;
+                        padding: 0px 30px;
+                        opacity: 1;
+    
+                        transition: max-width 0.5s,
+                                    padding 0.5s,
+                                    opacity 0.2s 0.5s;
+                    }
+                }
+            }
+        }
+    }
+}
