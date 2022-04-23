@@ -7,9 +7,7 @@
 
     padding-top: 150px;
 
-    display: grid;
-    grid-template-columns: min-content, auto;
-    grid-template-rows: min-content;
+    display: flex;
 
     .filters-container {
         width: fit-content;
@@ -256,6 +254,153 @@
                 color: #2A3B45;
 
                 transition: none;
+            }
+        }
+    }
+
+    .results-container {
+        width: 100%;
+        padding: 40px 0px;
+
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 90px;
+
+        .card-row {
+            max-width: calc(calc(160px * 5) + calc(40px * 4));
+            padding-bottom: 6rem;
+
+            overflow: hidden;
+
+            .cards-container {
+                width: 10000px;
+                height: fit-content;
+                
+                display: flex;
+                gap: 40px;
+
+                .discover-card {
+                    width: 160px;
+                    height: 240px;
+                    position: relative;
+    
+                    // border-radius: 5px;
+                    // border: 2px solid #2A3B45;
+                    
+                    background-color: #567CA0;
+                    background-color: transparent;
+                    opacity: 0;
+                    
+                    transition: width 0.2s;
+                    // overflow: hidden;
+    
+                    animation: fadeIn 0.5s forwards;
+    
+                    &:nth-child(2) {
+                        animation-delay: 0.1s;
+                    }
+                    &:nth-child(3) {
+                        animation-delay: 0.2s;
+                    }
+                    &:nth-child(4) {
+                        animation-delay: 0.3s;
+                    }
+                    &:nth-child(5) {
+                        animation-delay: 0.4s;
+                    }
+    
+                    @keyframes fadeIn {
+                        from {
+                            opacity: 0;
+                            transform: translateX(100%) rotate(45deg) scale(0);
+                        } to {
+                            opacity: 1;
+                            transform: translateX(0%) rotate(0deg) scale(1);
+                        }
+                    }
+
+                    .wrapper {
+                        width: 100%;
+                        height: 100%;
+
+                        position: relative;
+
+                        border-radius: 5px;
+                        border: 2px solid #26323D;
+                        overflow: hidden;
+
+                        .backdrop-wrapper, .poster-wrapper {
+                            width: 100%;
+                            height: 100%;
+        
+                            img {
+                                width: 100%;
+                                height: 100%;
+        
+                                object-fit: cover;
+                            }
+                        }
+        
+                        .poster-wrapper {
+                            transform: translateY(-100%);
+        
+                            transition: transform 0.5s;
+                        }
+        
+                        .details-wrapper {
+                            width: 100%;
+                            height: 100%;
+        
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+        
+                            visibility: hidden;
+                            opacity: 0;
+                            background: linear-gradient( to top, #0F1B26, #0f1b2600 );
+        
+                            transition: visibility 0s 0.5s,
+                                        opacity 0.5s;
+                        }
+                    }
+    
+                    .title {
+                        width: 100%;
+                        height: fit-content;
+    
+                        position: absolute;
+                        top: calc(100% + 2rem);
+    
+                        display: inline-block;
+    
+                        color: white;
+                        font-family: $roboto-condensed;
+                        font-size: 1.7rem;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+
+                        pointer-events: none;
+                    }
+    
+                    &:hover {
+                        width: 360px;
+                        
+                        .wrapper {
+                            .poster-wrapper {
+                                transform: translateY(0%);
+                            }
+        
+                            .details-wrapper {
+                                visibility: visible;
+                                opacity: 1;
+        
+                                transition: opacity 0.5s;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -1,8 +1,8 @@
 import { render } from "@testing-library/react";
-import { useLayoutEffect, useReducer } from "react";
+import { useEffect, useLayoutEffect, useReducer, useState, useRef, createContext, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { discover } from "../../../api-functions";
+import { bdUrl300, discover, imgUrl, imgUrlw154, pUrlw342 } from "../../../api-functions";
 import './../../../styles/discoverPage/discover.css';
 
 const FILTER_ACTIONS = {
@@ -10,11 +10,36 @@ const FILTER_ACTIONS = {
     ADDGENRE : '1',
     REMOVEGENRE : '2',
     RENDERGENRES : '3',
-    RENDERCARDS : '4'
+    SETDATA : '4'
 }
+
+const cardRowContext = createContext();
 
 function reducer(state, action) {
     let newState = {...state};
+
+    function setCards(array) {
+        let width = document.documentElement.clientWidth;
+
+        function set(count) {
+            let rows = [];
+            let counter = 0;
+            let datas = [];
+            
+            for (let rI = 1; rI <= array.length; rI++) {
+                datas.push(array[rI]);
+                if ( rI % 5 == 0 ) {
+                    rows.push(<CardRow key={'row-' + rI} data={datas}/>)
+                    datas = [];
+                }
+            }
+            newState.rows = [...rows];
+        }
+
+        if ( width > 1650 ) {
+            set(5);
+        }
+    } 
 
     if ( action.type == FILTER_ACTIONS.OPENDROPDOWN ) {
         newState.isDropdownOpen = !newState.isDropdownOpen;
@@ -32,9 +57,11 @@ function reducer(state, action) {
     } else if ( action.type == FILTER_ACTIONS.RENDERGENRES ) {
         newState.genre_buttons = [...newState.genres.map( g => <FilterGenre key={g} genre_name={g} remove_function={action.remove_function} />)];
         newState.renderGenres = false;
-    } else if ( action.type == FILTER_ACTIONS.RENDERCARDS ) {
+    } else if ( action.type == FILTER_ACTIONS.SETDATA ) {
         newState.results = {...action.results};
+        setCards(newState.results.results);
     }
+
     return newState;
 }
 
@@ -72,7 +99,7 @@ function Discover(props) {
     useLayoutEffect(() => {
         discover( (result) => {
             dispatch({
-                type : FILTER_ACTIONS.RENDERCARDS,
+                type : FILTER_ACTIONS.SETDATA,
                 results : result
             })
         } );
@@ -84,7 +111,7 @@ function Discover(props) {
                 type : FILTER_ACTIONS.RENDERGENRES,
                 remove_function : removeGenre
             });
-        }
+        } 
     }, [state]);
 
     return (
@@ -139,7 +166,7 @@ function Discover(props) {
                     <Link to={'/'}>Discover</Link>
                 </div>
                 <div className="results-container">
-
+                    {state.rows}
                 </div>
             </div>
         </main>
@@ -159,23 +186,65 @@ function FilterGenre(props) {
 
 function CardRow(props) {
 
-    function generateCards() {
+    const [cards, setCards] = useState([]);
+    const [pos, setPos] = useState(0);
+    const root = useRef();
 
-    }
+    useLayoutEffect(() => {
+        // console.log(props.data);
+        setCards(props.data.map( val => <Card data={{...val}} /> ));
+    }, []);
+
+    useEffect(() => {
+        root.current.scrollTo({
+            top: 0,
+            left: pos,
+            behavior : 'smooth'
+        });
+    }, [pos])
 
     return (
-        <div className="card-row">
-            <div className="cards-container">
-
+        <div className="card-row" ref={root} >
+            <div className="cards-container" onMouseLeave={() => {setPos(0)}}>
+                <cardRowContext.Provider value={setPos}>
+                    {cards}
+                </cardRowContext.Provider>
             </div>
         </div>
     );
 }
 
 function Card(props) {
+    const setPos = useContext(cardRowContext);
+    const root = useRef();
+    
+    function scrollParent() {
+        let container = root.current.parentElement.parentElement;
+        let cardsArray = Array.from(container.querySelectorAll('.discover-card'));
+        let index = cardsArray.indexOf(root.current);
+        if ( index == cardsArray.length - 1 ) {
+            setPos(200);
+        }
+    }
+
+    useLayoutEffect(() => {
+        // console.log(props);
+    }, []);
+
     return (
-        <div className="discover-card">
-            
+        <div className="discover-card" ref={root} onMouseEnter={scrollParent}>
+            <div className="wrapper">
+                <div className="backdrop-wrapper">
+                    <img src={bdUrl300 + props.data.backdrop_path} alt={props.data.title + ' backdrop'} />
+                </div>
+                <div className="poster-wrapper">
+                    <img src={pUrlw342 + props.data.poster_path} alt={props.data.title + ' poster'} />
+                </div>
+                <div className="details-wrapper">
+                    
+                </div>
+            </div>
+            <span className="title">{props.data.title}</span>
         </div>
     );
 }

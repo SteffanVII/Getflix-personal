@@ -13,6 +13,8 @@ let searchURL = api_URL + '/search/movie?api_key=' + api_key + '&query=';
 export const imgUrl = 'https://image.tmdb.org/t/p/original';
 export const imgUrlw92 = 'https://image.tmdb.org/t/p/w92';
 export const imgUrlw154 = 'https://image.tmdb.org/t/p/w154';
+export const pUrlw342 = 'https://image.tmdb.org/t/p/w342';
+export const bdUrl300 = 'https://image.tmdb.org/t/p/w300';
 
 export function getTrendings(setTrendings) {
     let xml = new XMLHttpRequest();
