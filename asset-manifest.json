@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Getflix-personal/static/css/main.02893351.css",
-    "main.js": "/Getflix-personal/static/js/main.119ca186.js",
+    "main.css": "/Getflix-personal/static/css/main.039918fd.css",
+    "main.js": "/Getflix-personal/static/js/main.28a6b81d.js",
     "static/js/787.7559a3f3.chunk.js": "/Getflix-personal/static/js/787.7559a3f3.chunk.js",
     "static/media/Default_backdrop.svg": "/Getflix-personal/static/media/Default_backdrop.70975800b556e088f53f2b60fa66901c.svg",
     "static/media/Default_poster.svg": "/Getflix-personal/static/media/Default_poster.9cd9c948bf0848b4cce038b3d49e042f.svg",
@@ -10,12 +10,12 @@
     "index.html": "/Getflix-personal/index.html",
     "static/media/search-vector.svg": "/Getflix-personal/static/media/search-vector.a8d2fef26b25eb5443e9e9bf6a731c31.svg",
     "static/media/facebook.svg": "/Getflix-personal/static/media/facebook.14eb9dd9e8426d49dbf2e2aba2906261.svg",
-    "main.02893351.css.map": "/Getflix-personal/static/css/main.02893351.css.map",
-    "main.119ca186.js.map": "/Getflix-personal/static/js/main.119ca186.js.map",
+    "main.039918fd.css.map": "/Getflix-personal/static/css/main.039918fd.css.map",
+    "main.28a6b81d.js.map": "/Getflix-personal/static/js/main.28a6b81d.js.map",
     "787.7559a3f3.chunk.js.map": "/Getflix-personal/static/js/787.7559a3f3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.02893351.css",
-    "static/js/main.119ca186.js"
+    "static/css/main.039918fd.css",
+    "static/js/main.28a6b81d.js"
   ]
 }
